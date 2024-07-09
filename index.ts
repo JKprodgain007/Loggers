@@ -1,19 +1,18 @@
-import express, { Express, Request, Response, Application } from 'express';
-import dotenv from 'dotenv';
-import loggerCreate from './log/DevLogs';
+import express, { Express, Request, Response , Application } from "express";
+import dotenv from "dotenv";
+import log from "./log/DevLogs";
 
 dotenv.config();
 
-const app: Application = express();
+const app = express();
 const port = process.env.PORT || 8080;
 
-app.get('/',(req:Request, res : Response) => {
-    res.send("Welcome to Logger Template");
-})
+app.get("/", (req: Request, res: Response) => {
+  res.send("Welcome to Logger Template");
+});
 
+log.info("server started");
 
-loggerCreate.info('server started');
-
-app.listen(port , ()=>{
-    loggerCreate.warn(`Server is running at http://localhost:${port}`);
+app.listen(port, () => {
+  log.warn(`Server is running at http://localhost:${port}`);
 });
